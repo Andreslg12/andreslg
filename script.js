@@ -1,47 +1,88 @@
-const frases = [
-    "Eres el lugar al que siempre quiero volver. ❤️",
-    "Cada segundo a tu lado es un regalo.",
-    "Gracias por hacerme tan feliz todos los días. ✨",
-    "Te amo más de lo que las palabras pueden expresar.",
-    "Eres mi persona favorita en el mundo entero. 🌎",
-    "Mi corazón late más fuerte cuando estoy contigo."
-];
-
-function cambiarFrase() {
-    const textoFrase = document.getElementById('frase');
-    const indice = Math.floor(Math.random() * frases.length);
-    textoFrase.innerText = frases[indice];
-    
-    // Crear una explosión extra de corazones al hacer clic
-    for(let i=0; i<5; i++) {
-        crearCorazon();
-    }
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #ffccd5 0%, #ffafbd 100%);
+    font-family: 'Quicksand', sans-serif;
+    overflow: hidden;
 }
 
-function crearCorazon() {
-    const contenedor = document.getElementById('corazones-container');
-    const corazon = document.createElement('div');
-    
-    corazon.classList.add('corazon');
-    corazon.innerText = '❤️';
-    
-    // Posición aleatoria
-    corazon.style.left = Math.random() * 100 + 'vw';
-    
-    // Tamaño aleatorio
-    corazon.style.fontSize = Math.random() * 20 + 10 + 'px';
-    
-    // Velocidad de animación aleatoria
-    const duracion = Math.random() * 3 + 2;
-    corazon.style.animationDuration = duracion + 's';
-    
-    contenedor.appendChild(corazon);
-    
-    // Eliminar el corazón después de que termine la animación
-    setTimeout(() => {
-        corazon.remove();
-    }, duracion * 1000);
+.container {
+    z-index: 10;
+    perspective: 1000px;
 }
 
-// Crear corazones continuamente
-setInterval(crearCorazon, 300);
+.card {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 350px;
+    /* Borde doble elegante */
+    border: 3px double #ff85a1;
+    /* Sombra profunda para que resalte */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 
+                0 0 20px rgba(255, 133, 161, 0.2);
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    color: #d63384;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.divider {
+    height: 2px;
+    width: 50px;
+    background-color: #ff85a1;
+    margin: 20px auto;
+}
+
+p {
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.5;
+    min-height: 60px; /* Evita que el cuadro salte al cambiar de texto */
+}
+
+button {
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff758f;
+    letter-spacing: 1px;
+}
+
+/* Corazones */
+.corazon {
+    position: absolute;
+    bottom: -10%;
+    pointer-events: none;
+    animation: flotar linear infinite;
+}
+
+@keyframes flotar {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}
