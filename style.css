@@ -5,56 +5,98 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Un fondo degradado más suave y romántico */
+    background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
+    font-family: 'Poppins', sans-serif; /* Si puedes, usa una fuente de Google Fonts */
     overflow: hidden;
-    text-align: center;
 }
 
 .container {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9); /* Blanco semi-transparente */
+    padding: 3rem;
+    border-radius: 30px; /* Bordes muy redondeados */
+    
+    /* El "brillo" alrededor del cuadro */
+    box-shadow: 0 20px 50px rgba(214, 51, 132, 0.3); 
+    
+    /* Borde decorativo fino */
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    
     z-index: 10;
-    max-width: 80%;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    
+    /* Efecto de cristal esmerilado (Glassmorphism) */
+    backdrop-filter: blur(10px);
+    
+    /* Pequeña animación de entrada */
+    animation: aparecer 1.5s ease-out;
 }
 
-h1 { color: #d63384; }
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 { 
+    color: #d63384; 
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
 
 p {
-    font-size: 1.2rem;
-    color: #555;
-    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #712b75;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-style: italic;
 }
 
 button {
-    background-color: #ff4d6d;
+    background: linear-gradient(to right, #ff4d6d, #ff758f);
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 50px;
+    padding: 15px 30px;
+    border-radius: 30px;
     cursor: pointer;
-    font-size: 1rem;
-    transition: transform 0.3s ease;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+    transition: all 0.3s ease;
 }
 
 button:hover {
-    transform: scale(1.1);
-    background-color: #ff758f;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 77, 109, 0.6);
 }
 
-/* Estilos para los corazones flotantes */
+button:active {
+    transform: translateY(0);
+}
+
+/* Corazones flotantes mejorados */
 .corazon {
     position: absolute;
     bottom: -10%;
-    color: #ff4d6d;
-    font-size: 1.5rem;
+    filter: drop-shadow(0 0 5px rgba(255, 77, 109, 0.5));
     user-select: none;
     animation: flotar linear infinite;
+    z-index: 1;
 }
 
 @keyframes flotar {
-    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+    0% { 
+        transform: translateY(0) rotate(0deg) scale(0.5); 
+        opacity: 0; 
+    }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { 
+        transform: translateY(-110vh) rotate(360deg) scale(1.2); 
+        opacity: 0; 
+    }
 }
