@@ -1,9 +1,11 @@
 const frases = [
-    "Eres mi sol en días nublados. ✨",
-    "Amo cada detalle de ti. ❤️",
+    "Eres la melodía que da ritmo a mi vida. ✨",
+    "Mi persona favorita x siempre ❤️",
     "Tu sonrisa es mi parte favorita del día.",
-    "Eres el sueño del que nunca quiero despertar.",
-    "Contigo todo es más bonito. 🌸"
+    "Si algun dia despiertas y no ves a nadie recuerda que siempre sere tu fan #1.",
+    "Contigo todo es más bonito. 🌸",
+    "Enamorado de la mas tesa, me encantas",
+    "Siempre seras la niña de mi corazon"
 ];
 
 function cambiarFrase() {
@@ -33,5 +35,6 @@ function crearCorazon() {
 }
 
 setInterval(crearCorazon, 400);
+
 
 
