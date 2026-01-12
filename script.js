@@ -1,88 +1,37 @@
-body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: radial-gradient(circle, #ffccd5 0%, #ffafbd 100%);
-    font-family: 'Quicksand', sans-serif;
-    overflow: hidden;
+const frases = [
+    "Eres mi sol en días nublados. ✨",
+    "Amo cada detalle de ti. ❤️",
+    "Tu sonrisa es mi parte favorita del día.",
+    "Eres el sueño del que nunca quiero despertar.",
+    "Contigo todo es más bonito. 🌸"
+];
+
+function cambiarFrase() {
+    const p = document.getElementById('frase');
+    const nuevaFrase = frases[Math.floor(Math.random() * frases.length)];
+    
+    // Efecto de desvanecimiento al cambiar
+    p.style.opacity = 0;
+    setTimeout(() => {
+        p.innerText = nuevaFrase;
+        p.style.opacity = 1;
+    }, 200);
+
+    for(let i=0; i<10; i++) { crearCorazon(); }
 }
 
-.container {
-    z-index: 10;
-    perspective: 1000px;
+function crearCorazon() {
+    const c = document.createElement('div');
+    c.classList.add('corazon');
+    c.innerHTML = '❤️';
+    c.style.left = Math.random() * 100 + 'vw';
+    c.style.fontSize = (Math.random() * 20 + 10) + 'px';
+    c.style.animationDuration = (Math.random() * 3 + 2) + 's';
+    c.style.opacity = Math.random();
+    document.getElementById('corazones-container').appendChild(c);
+    setTimeout(() => c.remove(), 5000);
 }
 
-.card {
-    background: rgba(255, 255, 255, 0.85);
-    padding: 40px;
-    border-radius: 20px;
-    text-align: center;
-    max-width: 350px;
-    /* Borde doble elegante */
-    border: 3px double #ff85a1;
-    /* Sombra profunda para que resalte */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 
-                0 0 20px rgba(255, 133, 161, 0.2);
-    backdrop-filter: blur(8px);
-    transition: transform 0.3s ease;
-}
+setInterval(crearCorazon, 400);
 
-.card:hover {
-    transform: translateY(-5px);
-}
 
-h1 {
-    font-family: 'Dancing Script', cursive;
-    color: #d63384;
-    font-size: 2.5rem;
-    margin: 0;
-}
-
-.divider {
-    height: 2px;
-    width: 50px;
-    background-color: #ff85a1;
-    margin: 20px auto;
-}
-
-p {
-    font-size: 1.1rem;
-    color: #444;
-    line-height: 1.5;
-    min-height: 60px; /* Evita que el cuadro salte al cambiar de texto */
-}
-
-button {
-    background: #ff4d6d;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 25px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
-    transition: 0.3s;
-}
-
-button:hover {
-    background: #ff758f;
-    letter-spacing: 1px;
-}
-
-/* Corazones */
-.corazon {
-    position: absolute;
-    bottom: -10%;
-    pointer-events: none;
-    animation: flotar linear infinite;
-}
-
-@keyframes flotar {
-    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
-}
