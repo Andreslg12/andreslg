@@ -1,3 +1,6 @@
+/* Importar fuentes elegantes */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
 body {
     margin: 0;
     padding: 0;
@@ -5,85 +8,95 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: radial-gradient(circle, #ffccd5 0%, #ffafbd 100%);
-    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+    font-family: 'Poppins', sans-serif;
     overflow: hidden;
 }
 
+/* El cuadro blanco mejorado */
 .container {
-    z-index: 10;
-    perspective: 1000px;
-}
-
-.card {
-    background: rgba(255, 255, 255, 0.85);
-    padding: 40px;
-    border-radius: 20px;
+    background: white;
+    padding: 50px 40px;
+    border-radius: 50px; /* Bordes mucho más redondeados */
     text-align: center;
-    max-width: 350px;
-    /* Borde doble elegante */
-    border: 3px double #ff85a1;
-    /* Sombra profunda para que resalte */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 
-                0 0 20px rgba(255, 133, 161, 0.2);
-    backdrop-filter: blur(8px);
-    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 10;
+    max-width: 400px;
+    width: 85%;
+    
+    /* Sombra con color para que resalte del fondo */
+    box-shadow: 20px 20px 60px #d98387, -20px -20px 60px #ffb1b5;
+    
+    /* Borde sutil rosa */
+    border: 4px solid #fff5f6;
 }
 
-.card:hover {
-    transform: translateY(-5px);
+/* Decoración: pequeños corazones en las esquinas del cuadro */
+.container::before {
+    content: '🌸';
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 1.2rem;
+}
+
+.container::after {
+    content: '🌸';
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    font-size: 1.2rem;
 }
 
 h1 {
     font-family: 'Dancing Script', cursive;
-    color: #d63384;
-    font-size: 2.5rem;
-    margin: 0;
-}
-
-.divider {
-    height: 2px;
-    width: 50px;
-    background-color: #ff85a1;
-    margin: 20px auto;
+    color: #ff4d6d;
+    font-size: 2.8rem;
+    margin-bottom: 10px;
 }
 
 p {
+    color: #555;
     font-size: 1.1rem;
-    color: #444;
-    line-height: 1.5;
-    min-height: 60px; /* Evita que el cuadro salte al cambiar de texto */
+    font-style: italic;
+    margin-bottom: 30px;
+    line-height: 1.6;
 }
 
 button {
     background: #ff4d6d;
     color: white;
     border: none;
-    padding: 12px 25px;
-    border-radius: 25px;
-    font-weight: bold;
+    padding: 15px 35px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
-    transition: 0.3s;
-}
-
-button:hover {
-    background: #ff758f;
+    box-shadow: 0 10px 20px rgba(255, 77, 109, 0.3);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-/* Corazones */
+button:hover {
+    background: #c9184a;
+    transform: scale(1.05);
+    box-shadow: 0 15px 25px rgba(255, 77, 109, 0.5);
+}
+
+/* Ajuste de corazones flotantes */
 .corazon {
     position: absolute;
     bottom: -10%;
-    pointer-events: none;
     animation: flotar linear infinite;
+    z-index: 1;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));
 }
 
 @keyframes flotar {
     0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
+    20% { opacity: 0.8; }
+    80% { opacity: 0.8; }
     100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
 }
 
